@@ -1,0 +1,5 @@
+flit
+gidgethub[aiohttp]
+pytest
+pytest-cov
+pytest-aiohttp
