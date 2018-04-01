@@ -9,8 +9,9 @@ author-email = "andrew.svetlov@gmail.com"
 dist-name="github-bot"
 home-page = "https://github.com/aio-libs/github-bot"
 description-file="README.rst"
-requires=["aiohttp >= 3.0.0",
-          "gidgethub[aiohttp] >= 2.4.1"]
+requires=["aiohttp >= 3.1.0",
+          "gidgethub[aiohttp] >= 2.4.1",
+	  "cachetools >= 2.0.0"]
 requires-python=">=3.6"
 classifiers = ["License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3",

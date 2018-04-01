@@ -1,5 +1,7 @@
+cachetools
 flit
 gidgethub[aiohttp]
+ipython
 pytest
 pytest-cov
 pytest-aiohttp
