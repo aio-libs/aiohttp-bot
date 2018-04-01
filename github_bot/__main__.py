@@ -10,10 +10,10 @@ from gidgethub import aiohttp as gh_aiohttp
 from gidgethub import routing
 from gidgethub import sansio
 
-# from . import backport, bpo, close_pr, follow_up, news, stage
+from . import wip
 
 
-router = routing.Router()
+router = routing.Router(wip.router)
 cache = cachetools.LRUCache(maxsize=500)
 
 
