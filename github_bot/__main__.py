@@ -53,4 +53,5 @@ if __name__ == "__main__":  # pragma: no cover
     port = os.environ.get("PORT")
     if port is not None:
         port = int(port)
+
     web.run_app(create_app(), port=port)
