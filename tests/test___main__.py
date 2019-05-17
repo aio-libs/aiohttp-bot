@@ -1,7 +1,7 @@
 from aiohttp import web
 import pytest
 
-from github_bot.__main__ import create_app
+from aiohttp_bot.__main__ import create_app
 
 
 @pytest.fixture

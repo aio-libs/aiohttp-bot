@@ -3,7 +3,7 @@ import http
 import gidgethub
 import pytest
 
-from github_bot import util
+from aiohttp_bot import util
 
 
 def test_StatusState():

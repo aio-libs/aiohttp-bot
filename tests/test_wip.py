@@ -1,7 +1,7 @@
 from gidgethub import sansio
 
 
-from github_bot import wip
+from aiohttp_bot import wip
 
 
 async def test_set_status_failure(fake_gh):
