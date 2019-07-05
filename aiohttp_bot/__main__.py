@@ -10,10 +10,10 @@ from gidgethub import aiohttp as gh_aiohttp
 from gidgethub import routing
 from gidgethub import sansio
 
-from . import wip
+from . import backport_pr, delete_branch, status_change
 
 
-router = routing.Router(wip.router)
+router = routing.Router(backport_pr.router, delete_branch.router, status_change.router)
 cache = cachetools.LRUCache(maxsize=500)
 
 
@@ -27,7 +27,7 @@ async def handler(request):
             return web.Response(status=200)
         oauth_token = os.environ.get("GH_AUTH")
         async with aiohttp.ClientSession() as session:
-            gh = gh_aiohttp.GitHubAPI(session, "aio-libs/github-bot",
+            gh = gh_aiohttp.GitHubAPI(session, "aio-libs/aiohttp",
                                       oauth_token=oauth_token,
                                       cache=cache)
             # Give GitHub some time to reach internal consistency.
