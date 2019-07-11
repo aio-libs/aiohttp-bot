@@ -58,8 +58,7 @@ async def test_labeled_on_merged_pr_no_backport_label():
             "merged_by": {"login": "Mariatta"},
             "user": {"login": "Mariatta"},
             "merge_commit_sha": "f2393593c99dd2d3ab8bfab6fcc5ddee540518a9",
-            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1"
-
+            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1",
         },
         "label": {"name": "enhancement"},
     }
@@ -82,8 +81,7 @@ async def test_merged_pr_no_backport_label():
             "merged_by": {"login": "Mariatta"},
             "user": {"login": "Mariatta"},
             "merge_commit_sha": "f2393593c99dd2d3ab8bfab6fcc5ddee540518a9",
-            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1"
-
+            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1",
         },
     }
     event = sansio.Event(data, event="pull_request", delivery_id="1")
@@ -93,13 +91,14 @@ async def test_merged_pr_no_backport_label():
     getitem = {
         "https://api.github.com/repos/aio-libs/aiohttp/issues/1": {
             "labels_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels{/name}",
-            "labels": [{
-                           "url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
-                           "name": label}]
+            "labels": [
+                {
+                    "url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
+                    "name": label,
+                }
+            ],
         },
-        "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels": [
-
-        ],
+        "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels": [],
     }
 
     gh = FakeGH(getitem=getitem)
@@ -117,8 +116,7 @@ async def test_merged_pr_with_backport_label():
             "merged_by": {"login": "Mariatta"},
             "user": {"login": "Mariatta"},
             "merge_commit_sha": "f2393593c99dd2d3ab8bfab6fcc5ddee540518a9",
-            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1"
-
+            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1",
         },
     }
     event = sansio.Event(data, event="pull_request", delivery_id="1")
@@ -128,12 +126,15 @@ async def test_merged_pr_with_backport_label():
     getitem = {
         "https://api.github.com/repos/aio-libs/aiohttp/issues/1": {
             "labels_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels{/name}",
-            "labels": [{
-                           "url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
-                           "name": label}]
+            "labels": [
+                {
+                    "url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
+                    "name": label,
+                }
+            ],
         },
         "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels": [
-            {"name": "needs backport to 3.7"},
+            {"name": "needs backport to 3.7"}
         ],
     }
 
@@ -157,8 +158,7 @@ async def test_merged_pr_with_backport_label_thank_pr_author():
             "merged_by": {"login": "Mariatta"},
             "user": {"login": "gvanrossum"},
             "merge_commit_sha": "f2393593c99dd2d3ab8bfab6fcc5ddee540518a9",
-            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1"
-
+            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1",
         },
     }
     event = sansio.Event(data, event="pull_request", delivery_id="1")
@@ -169,12 +169,15 @@ async def test_merged_pr_with_backport_label_thank_pr_author():
     getitem = {
         "https://api.github.com/repos/aio-libs/aiohttp/issues/1": {
             "labels_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels{/name}",
-            "labels": [{
-                           "url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
-                           "name": label}]
+            "labels": [
+                {
+                    "url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
+                    "name": label,
+                }
+            ],
         },
         "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels": [
-            {"name": "needs backport to 3.7"},
+            {"name": "needs backport to 3.7"}
         ],
     }
 
@@ -199,8 +202,7 @@ async def test_backport_pr_redis_connection_error():
             "merged_by": {"login": "Mariatta"},
             "user": {"login": "gvanrossum"},
             "merge_commit_sha": "f2393593c99dd2d3ab8bfab6fcc5ddee540518a9",
-            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1"
-
+            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1",
         },
     }
     event = sansio.Event(data, event="pull_request", delivery_id="1")
@@ -210,12 +212,15 @@ async def test_backport_pr_redis_connection_error():
     getitem = {
         "https://api.github.com/repos/aio-libs/aiohttp/issues/1": {
             "labels_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels{/name}",
-            "labels": [{
-                           "url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
-                           "name": label}]
+            "labels": [
+                {
+                    "url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
+                    "name": label,
+                }
+            ],
         },
         "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels": [
-            {"name": "needs backport to 3.7"},
+            {"name": "needs backport to 3.7"}
         ],
     }
 
@@ -239,7 +244,7 @@ async def test_backport_pr_kombu_operational_error():
             "merged_by": {"login": "Mariatta"},
             "user": {"login": "gvanrossum"},
             "merge_commit_sha": "f2393593c99dd2d3ab8bfab6fcc5ddee540518a9",
-            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1"
+            "issue_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1",
         },
     }
     event = sansio.Event(data, event="pull_request", delivery_id="1")
@@ -249,11 +254,15 @@ async def test_backport_pr_kombu_operational_error():
     getitem = {
         "https://api.github.com/repos/aio-libs/aiohttp/issues/1": {
             "labels_url": "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels{/name}",
-            "labels": [{"url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
-                        "name": label}]
+            "labels": [
+                {
+                    "url": f"https://api.github.com/repos/aio-libs/aiohttp/labels/{encoded_label}",
+                    "name": label,
+                }
+            ],
         },
         "https://api.github.com/repos/aio-libs/aiohttp/issues/1/labels": [
-            {"name": "needs backport to 3.7"},
+            {"name": "needs backport to 3.7"}
         ],
     }
     post = {
