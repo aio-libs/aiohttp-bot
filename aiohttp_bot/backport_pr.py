@@ -60,6 +60,7 @@ async def backport_pr(event, gh, *args, **kwargs):
                     gh, commit_hash, branch, issue_number, created_by, merged_by
                 )
 
+
 async def kickoff_backport_task(
     gh, commit_hash, branch, issue_number, created_by, merged_by
 ):
