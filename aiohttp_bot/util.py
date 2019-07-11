@@ -6,14 +6,17 @@ import subprocess
 
 LABEL_PREFIX = "awaiting"
 
+
 @enum.unique
 class Blocker(enum.Enum):
     """What is blocking a pull request from being committed."""
+
     review = f"{LABEL_PREFIX} review"
     core_review = f"{LABEL_PREFIX} comitter review"
     changes = f"{LABEL_PREFIX} changes"
     change_review = f"{LABEL_PREFIX} change review"
     merge = f"{LABEL_PREFIX} merge"
+
 
 async def comment_on_pr(gh, issue_number, message):
     """
@@ -118,16 +121,14 @@ async def is_committer(gh, username):
     else:
         return True
 
+
 def user_login(item):
     return item["user"]["login"]
 
 
 def pr_is_awaiting_merge(pr_labels):
     label_names = [label["name"] for label in pr_labels]
-    if (
-        "DO-NOT-MERGE" not in label_names
-        and "awaiting merge" in label_names
-    ):
+    if "DO-NOT-MERGE" not in label_names and "awaiting merge" in label_names:
         return True
     return False
 
@@ -161,6 +162,7 @@ async def stage(gh, issue, blocked_on):
     await remove_stage_labels(gh, issue)
     await gh.post(issue["labels_url"], data=[label_name])
 
+
 async def remove_stage_labels(gh, issue):
     """Remove all "awaiting" labels."""
     # There's no reason to expect there to be multiple "awaiting" labels on a
@@ -175,4 +177,3 @@ async def remove_stage_labels(gh, issue):
 async def issue_for_PR(gh, pull_request):
     """Get the issue data for a pull request."""
     return await gh.getitem(pull_request["issue_url"])
-
