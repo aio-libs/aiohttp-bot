@@ -4,6 +4,7 @@ import gidgethub
 from gidgethub import sansio
 
 from aiohttp_bot import status_change
+
 # from aiohttp_bot.util import AUTOMERGE_LABEL
 
 
@@ -311,6 +312,7 @@ async def test_travis_not_done():
 
     assert not gh.getiter_url
 
+
 async def test_pr_title_does_not_match():
     sha = "f2393593c99dd2d3ab8bfab6fcc5ddee540518a9"
     data = {"sha": sha, "commit": {"committer": {"login": "aiohttp-bot"}}}
@@ -365,6 +367,7 @@ async def test_pr_title_does_not_match():
     await status_change.router.dispatch(event, gh)
     assert not hasattr(gh, "post_data")  # does not leave a comment
     assert not hasattr(gh, "put_data")  # is not merged
+
 
 async def test_pr_not_found_for_commit():
     sha = "f2393593c99dd2d3ab8bfab6fcc5ddee540518a9"
