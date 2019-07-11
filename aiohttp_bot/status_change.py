@@ -64,14 +64,14 @@ async def check_ci_status_and_approval(
                 if result["state"] == "success":
 
                     if util.pr_is_awaiting_merge(pr_for_commit["labels"]):
-                        await merge_pr(
-                            gh, pr_for_commit, sha
-                        )
+                        await merge_pr(gh, pr_for_commit, sha)
 
 
 async def merge_pr(gh, pr, sha):
     pr_number = pr["number"]
-    async for commit in gh.getiter(f"/repos/aio-libs/aiohttp/pulls/{pr_number}/commits"):
+    async for commit in gh.getiter(
+        f"/repos/aio-libs/aiohttp/pulls/{pr_number}/commits"
+    ):
         if commit["sha"] == sha:
             commit_msg = commit["commit"]["message"].split("\n")
             pr_commit_msg = "\n".join(commit_msg[1:])
