@@ -21,5 +21,6 @@ async def new_review(event, gh, *args, **kwargs):
         return
     elif await util.is_committer(gh, reviewer):
         if state == "approved":
-            await util.stage(gh, await util.issue_for_PR(gh, pull_request), util.Blocker.merge)
-
+            await util.stage(
+                gh, await util.issue_for_PR(gh, pull_request), util.Blocker.merge
+            )
