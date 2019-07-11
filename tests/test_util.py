@@ -199,10 +199,7 @@ def test_pr_is_awaiting_merge():
 
 
 def test_pr_is_do_not_merge():
-    labels = [
-        {"name": "awaiting merge"},
-        {"name": "DO-NOT-MERGE"},
-    ]
+    labels = [{"name": "awaiting merge"}, {"name": "DO-NOT-MERGE"}]
     assert util.pr_is_awaiting_merge(labels) is False
 
 
@@ -217,11 +214,9 @@ def test_pr_is_do_not_merge():
 
 
 def test_pr_is_not_awaiting_merge():
-    labels = [
-        {"name": "skip issue"},
-        {"name": "awaiting review"},
-    ]
+    labels = [{"name": "skip issue"}, {"name": "awaiting review"}]
     assert util.pr_is_awaiting_merge(labels) is False
+
 
 #
 # def test_pr_is_not_automerge():
